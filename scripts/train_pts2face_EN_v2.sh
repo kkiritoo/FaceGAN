@@ -1,0 +1,28 @@
+python train.py --dataroot /home/lingxiao.song/database/cas_peal_r1/cas-prel-r1_cut144_simi1/ \
+                --train_list /home/lingxiao.song/database/cas_peal_r1/cut144_simi1_A_B_landmarks_train.49pt \
+                --checkpoints_dir /home/lingxiao.song/slx_project/pytorch/cycleGAN/save_model/pts2face \
+                --name pts2face_EN_v2_stage2 \
+                --model pts2face \
+                --batchSize 5 --loadSize 144 --fineSize 128 --input_nc 50 --output_nc 1 \
+                --which_model_netG resnet_6blocks \
+                --which_model_netD 2_layers \
+                --which_direction AtoB \
+                --lambda_A 100 \
+                --dataset_mode imglist_pts \
+                --no_lsgan \
+                --use_dropout \
+                --norm batch \
+                --no_html \
+                --gpu_ids 2 \
+                --display_id -1 \
+                --save_latest_freq 1000 \
+                --save_epoch_freq 1 \
+                --niter_decay 200 \
+                --niter 50 \
+                --lr 0.0002 \
+                --lambda_F 0.1 \
+                --F_weights /home/lingxiao.song/slx_project/pytorch/light_cnn/lightCNN_6_checkpoint.pth.tar \
+                --color_mode L \
+                --epoch_F 150 \
+                --continue_train \
+        2>&1 | tee logs/train_pts2face_EN_v2_08.17_epoch50.log
